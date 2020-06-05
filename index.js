@@ -14,6 +14,7 @@ Go code!
 */
 const express = require("express"); // similar to import express from "express"
 const projectsRouter = require("./routers/projects-router");
+const actionsRouter = require("./routers/actions-router");
 //create a server
 const server = express();
 
@@ -22,6 +23,12 @@ server.use(express.json()); //teaches how to parse JSON from the body
 
 // // use routes and endpoints
 server.use("/api/projects", projectsRouter);
+
+server.use("/api/projects/:id/actions", actionsRouter);
+
+// server.get("/", (req, res) => {
+//   res.send(`<h2>Projects and Actions</h2>`);
+// });
 
 server.listen(8000, () => {
   console.log("\n*** Server Running on http://localhost:8000 ***\n");
