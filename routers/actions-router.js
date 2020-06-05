@@ -11,7 +11,7 @@ router.get("/", function (req, res) {
   const { id } = req.params;
 
   actionsModel
-    .get(req.query, id)
+    .get()
     .then((actions) => {
       res.status(200).json(actions);
     })
@@ -19,6 +19,20 @@ router.get("/", function (req, res) {
       console.log("CATCH ERROR GET:", error);
       res.status(500).json({
         errorMessage: "The users information could not be retrieved.",
+      });
+    });
+});
+
+router.post("/", (req, res) => {
+  actionsModel
+    .insert(req.body)
+    .then((action) => {
+      res.status(201).json(action);
+    })
+    .catch((error) => {
+      console.log("POST CATCH ERROR", error);
+      res.status(500).json({
+        error: "There was an error while saving the project to the database",
       });
     });
 });
