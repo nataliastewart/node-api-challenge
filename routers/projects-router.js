@@ -62,4 +62,20 @@ router.put("/:id", (req, res) => {
   });
 });
 
+router.get("/:id", function (req, res) {
+  const { id } = req.params;
+
+  projectModel
+    .getProjectActions(id)
+    .then((action) => {
+      res.status(200).json(action);
+    })
+    .catch((error) => {
+      console.log("CATCH ERROR GET:", error);
+      res.status(500).json({
+        errorMessage: "The projects information could not be retrieved.",
+      });
+    });
+});
+
 module.exports = router;

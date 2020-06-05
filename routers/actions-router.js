@@ -37,4 +37,31 @@ router.post("/", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+
+  actionsModel.remove(id).then((item) => {
+    if (item == item > 0) {
+      res.status(200).json({ message: `The ACTION ${id} has been deleted` });
+    } else {
+      res.status(500).json({
+        message: "Error removing the ACTION",
+      });
+    }
+  });
+});
+
+router.put("/:id", (req, res) => {
+  const { id } = req.params;
+  const updatedaction = req.body;
+
+  actionsModel.update(id, updatedaction).then((item) => {
+    if (item.id == id) {
+      res.status(201).json({ ...updatedaction });
+    } else {
+      res.status(500).json({ error: "The post could not be updated" });
+    }
+  });
+});
+
 module.exports = router;
