@@ -40,13 +40,28 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+  We were working with SERVER and ROUTER that express provide.
+
 - [ ] Describe Middleware?
+
+Using middleware we can add extra functionality to our application. Middleware provide a way to extend the features provided by the Express framework.
 
 - [ ] Describe a Resource?
 
+REST is a way to guide the architecture of our web and Resource is one of its principles :
+everything is a resource.
+each resource is accessible via a unique URI.
+resources can have multiple representations.
+communication happens over a stateless protocol (HTTP).
+resource management happens via HTTP methods.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+The status(200), which is by default to let the client know that everything went well.
+
 - [ ] How can we partition our application into sub-applications?
+
+I can create new instances of the Express object, and .use it in another Express object just like a router or other middleware.
 
 ## Minimum Viable Product
 
